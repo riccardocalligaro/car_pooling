@@ -1,0 +1,59 @@
+body {
+  font-family: var(--title-font-family);
+}
+
+.label {
+  margin-left: 10px;
+}
+
+.vertical-center {
+  min-height: 100%;
+  /* Fallback for browsers do NOT support vh unit */
+  min-height: 100vh;
+  /* These two lines are counted as one :-)       */
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding-left: 5rem;
+  padding-right: 5rem;
+}
+
+.vertical-center h1 {
+  max-width: -webkit-fit-content;
+  max-width: -moz-fit-content;
+  max-width: fit-content;
+}
+
+.vertical-center img {
+  max-width: 100%;
+  max-height: 100%;
+  min-width: 200px;
+}
+
+.cl1 p {
+  max-width: 700px;
+}
+
+.cl2 form {
+  max-width: 800px;
+}
+
+.paragraph {
+  color: var(--paragraph-color);
+  font-weight: var(--paragraph-font-weight);
+  font-size: var(--paragraph-font-size);
+}
+
+.title {
+  color: var(--primary);
+  font-weight: var(--title-font-weight);
+  font-size: var(--title-font-size);
+}
+
+.btn-primary {
+  background-color: var(--primary) !important;
+}
+/*# sourceMappingURL=style.css.map */

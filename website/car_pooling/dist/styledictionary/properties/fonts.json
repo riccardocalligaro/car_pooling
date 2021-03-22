@@ -1,0 +1,30 @@
+{
+  "font": {
+    "paragraph-font": {
+      "family": {
+        "value": "Montserrat"
+      },
+      "weight": {
+        "value": "Light"
+      }
+    },
+    "title-font": {
+      "family": {
+        "value": "Montserrat"
+      },
+      "weight": {
+        "value": "Bold"
+      }
+    }
+  },
+  "size": {
+    "font": {
+      "paragraph-font": {
+        "value": "32"
+      },
+      "title-font": {
+        "value": "54"
+      }
+    }
+  }
+}
