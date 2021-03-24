@@ -1,3 +1,14 @@
+:root {
+  --paragraph-color: #2f2e41;
+  --primary: #6c63ff;
+  --paragraph-font-family: Montserrat;
+  --paragraph-font-weight: Light;
+  --title-font-family: Montserrat;
+  --title-font-weight: Bold;
+  --paragraph-font-size: 32px;
+  --title-font-size: 54px;
+}
+
 body {
   font-family: var(--title-font-family);
 }
