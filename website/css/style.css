@@ -3,7 +3,7 @@
   --primary: #6c63ff;
   --paragraph-font-family: Montserrat;
   --paragraph-font-weight: Light;
-  --title-font-family: Montserrat;
+  --title-font-family: Montserrat, sans-serif;
   --title-font-weight: Bold;
   --paragraph-font-size: 32px;
   --title-font-size: 54px;
@@ -66,5 +66,14 @@ body {
 
 .btn-primary {
   background-color: var(--primary) !important;
+}
+
+.responsive {
+  width: 100%;
+  max-height: 500px;
+}
+
+.table th {
+  color: var(--primary);
 }
 /*# sourceMappingURL=style.css.map */
