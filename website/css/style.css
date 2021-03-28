@@ -7,6 +7,8 @@
   --title-font-weight: Bold;
   --paragraph-font-size: 32px;
   --title-font-size: 54px;
+  height: 100%;
+  width: 100%;
 }
 
 body {
@@ -76,4 +78,6 @@ body {
 .table th {
   color: var(--primary);
 }
+
+
 /*# sourceMappingURL=style.css.map */
