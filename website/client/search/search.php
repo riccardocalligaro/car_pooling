@@ -71,7 +71,7 @@
             echo '
             <div class="text-center">
             <h2 class="mb-2">Nessun risultato</h2>
-            <img class="mt-5 responsive" src="./assets/illustrations/To_do.svg" alt="" srcset="">
+            <img class="mt-5 responsive w-75 mx-auto" src="./assets/illustrations/To_do.svg" alt="" srcset="">
             </div>
             ';
         }
