@@ -36,7 +36,7 @@
         $rows = $res->num_rows;
 
         if ($rows > 0) {
-            echo '<table class="table w-75">
+            echo '<table class="table w-75 mx-auto">
             <thead>
                 <tr>
                     <th scope="col">Città partenza</th>
@@ -70,7 +70,7 @@
         } else {
             echo '
             <div class="text-center">
-            <h2>Nessun risultato</h2>
+            <h2 class="mb-2">Nessun risultato</h2>
             <img class="mt-5 responsive" src="./assets/illustrations/To_do.svg" alt="" srcset="">
             </div>
             ';

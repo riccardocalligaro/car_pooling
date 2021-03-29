@@ -39,9 +39,9 @@ if (!(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true && $_SESSIO
             </div>
         </div>
     </nav>
-    <div class="row mt-5 pe-2 ps-2">
+    <div class="row mt-5 pe-2 ps-2 vertical-center">
         <div class="col-lg-6 col-md-12 col-sm-12 text-center">
-            <h1 class="title">Ricerca un viaggio</h1>
+            <h1 class="title mx-auto">Ricerca un viaggio</h1>
             <p class="paragraph">Immetti i dati di un viaggio per trovare l'orario che più ti soddisfa</p>
             <div class="cl2 mt-5">
                 <form action="#" class="mx-auto">
@@ -63,10 +63,10 @@ if (!(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true && $_SESSIO
                 </form>
             </div>
         </div>
-        <div class="col">
+        <div class="col-lg-6 col-md-12 col-sm-12 text-center">
             <!-- Se non ci sono ancora dati visualizzare l'illustrazione, se ci sono i dati visualizzare la tabella -->
-            <div id="results">
-                <img class="mt-5 responsive" src="./assets/illustrations/To_do.svg" alt="" srcset="">
+            <div class="table-responsive" id="results">
+                <img class="mt-5 responsive w-75 mx-auto" src="./assets/illustrations/To_do.svg" alt="" srcset="">
             </div>
         </div>
     </div>
