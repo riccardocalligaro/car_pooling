@@ -23,10 +23,10 @@ cp_head('I miei viaggi', '../../');
                         <a class="nav-link" aria-current="page" href="../../dashboard_client.php">Dashboard</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="../trips/trips_page.php">I miei viaggi</a>
+                        <a class="nav-link active" href="../trips/trips_page.php">I miei viaggi</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" href="client/settings/settings_page.php">Impostazioni</a>
+                        <a class="nav-link" href="client/settings/settings_page.php">Impostazioni</a>
                     </li>
                 </ul>
             </div>

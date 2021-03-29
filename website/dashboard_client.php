@@ -59,7 +59,7 @@ if (!(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true && $_SESSIO
                         <label for="inputDate" class="form-label">Data</label>
                         <input type="date" class="form-control" id="inputDate">
                     </div>
-                    <button class="btn btn-primary w-100" id="search_btn">Ricerca</button>
+                    <a class="btn btn-primary w-100" id="search_btn">Ricerca</a>
                 </form>
             </div>
         </div>

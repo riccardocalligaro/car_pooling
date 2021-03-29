@@ -6,7 +6,9 @@
     $destination_city = $_POST['destination_city'];
     $date = $_POST['date'];
 
-    $query = "SELECT viaggi_autisti.data_partenza, viaggi_autisti.data_arrivo, autista.nome, autista.cognome, automobile.posti, partenza.citta_partenza, destinazione.citta_destinazione, viaggio.tempo_stimato FROM 
+ 
+
+    $query = "SELECT autista.id as 'driver_id', partenza.id as 'id_partenza', destinazione.id as 'id_destinazione', viaggi_autisti.id, viaggi_autisti.data_partenza, viaggi_autisti.data_arrivo, autista.nome, autista.cognome, automobile.posti, partenza.citta_partenza, destinazione.citta_destinazione, viaggio.tempo_stimato FROM 
     (
         SELECT citta.istat as 'id', citta.comune as 'citta_partenza'
         FROM citta
@@ -22,15 +24,19 @@
     INNER JOIN autista ON viaggi_autisti.autista_id = autista.id
     INNER JOIN automobile ON viaggi_autisti.automobile_targa = automobile.targa
     WHERE viaggio.citta_partenza = partenza.id AND viaggio.citta_destinazione = destinazione.id AND viaggi_autisti.prenotazioni_aperte = true
-    AND CAST(viaggi_autisti.data_partenza as DATE) = ?
     ";
 
-    $stmt = $conn->prepare($query);
-    $stmt->bind_param("sss", $start_city, $destination_city, $date);
-
-    $stmt->execute();
+    if ($date != '') {
+        $query .= 'AND CAST(viaggi_autisti.data_partenza as DATE) = ?';
+        $stmt = $conn->prepare($query);
+        $stmt->bind_param("sss", $start_city, $destination_city, $date);
     
-   
+        $stmt->execute();
+    } else {
+        $stmt = $conn->prepare($query);
+        $stmt->bind_param("ss", $start_city, $destination_city);
+        $stmt->execute();
+    }
 
     if ($res = $stmt->get_result()) {
         $rows = $res->num_rows;
@@ -61,9 +67,10 @@
                 <td>{$row['tempo_stimato']}</td>
                 <td>{$row['nome']} {$row['cognome']}</td>
                 <td>{$row['posti']}</td>
-                <td><button class='btn btn-primary w-100' id='search_btn'>Prenota</button></td>
+                <td><a href='client/trips/trip_page.php?id={$row['id']}&start={$row['id_partenza']}&end={$row['id_destinazione']}&driver={$row['driver_id']}' class='btn btn-primary w-100' id='search_btn'>Prenota</button></td>
             </tr>";
             }
+
     
             echo '    </tbody>
         </table>';
@@ -75,8 +82,6 @@
             </div>
             ';
         }
-     
-
     }
     
     $stmt->close();
