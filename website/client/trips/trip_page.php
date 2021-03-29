@@ -261,7 +261,7 @@ cp_head('Prenota un viaggio', '../../');
                     </div>
                     <div class="col-md-6 mb-3">
                         <label for="state">Provincia</label>
-                        <select class="custom-select d-block w-100" id="state" required="" name="provincia">
+                        <select class="form-control" id="state" required="" name="provincia">
 
                             <?php
 

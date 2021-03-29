@@ -8,7 +8,7 @@
 
  
 
-    $query = "SELECT autista.id as 'driver_id', partenza.id as 'id_partenza', destinazione.id as 'id_destinazione', viaggi_autisti.id, viaggi_autisti.data_partenza, viaggi_autisti.data_arrivo, autista.nome, autista.cognome, automobile.posti, partenza.citta_partenza, destinazione.citta_destinazione, viaggio.tempo_stimato FROM 
+    $query = "SELECT viaggi_autisti.posti_disponibili, viaggio.contributo_economico, autista.id as 'driver_id', partenza.id as 'id_partenza', destinazione.id as 'id_destinazione', viaggi_autisti.id, viaggi_autisti.data_partenza, viaggi_autisti.data_arrivo, autista.nome, autista.cognome, automobile.posti, partenza.citta_partenza, destinazione.citta_destinazione, viaggio.tempo_stimato FROM 
     (
         SELECT citta.istat as 'id', citta.comune as 'citta_partenza'
         FROM citta
@@ -42,38 +42,27 @@
         $rows = $res->num_rows;
 
         if ($rows > 0) {
-            echo '<table class="table w-75 mx-auto">
-            <thead>
-                <tr>
-                    <th scope="col">Città partenza</th>
-                    <th scope="col">Città destinazione</th>
-                    <th scope="col">Data partenza</th>
-                    <th scope="col">Data arrivo</th>
-                    <th scope="col">Tempo stimato</th>
-                    <th scope="col">Autista</th>
-                    <th scope="col">Posti automobile</th>
-                    <th scope="col">Azione</th>
-                </tr>
-            </thead>
-            <tbody>';
-    
-            
             while ($row = $res->fetch_assoc()) {
-                echo "<tr>
-                <td>{$row['citta_partenza']}</td>
-                <td>{$row['citta_destinazione']}</td>
-                <td>{$row['data_partenza']}</td>
-                <td>{$row['data_arrivo']}</td>
-                <td>{$row['tempo_stimato']}</td>
-                <td>{$row['nome']} {$row['cognome']}</td>
-                <td>{$row['posti']}</td>
-                <td><a href='client/trips/trip_page.php?id={$row['id']}&start={$row['id_partenza']}&end={$row['id_destinazione']}&driver={$row['driver_id']}' class='btn btn-primary w-100' id='search_btn'>Prenota</button></td>
-            </tr>";
-            }
+                echo ' <div class="card text-start mt-3">
+                <div class="card-header">
+                '.$row['nome'].' '.$row['cognome'].' 
+      </div>
+                <div class="card-body">
+                    <h5 class="card-title">'.$row['citta_partenza'].' - '.$row['citta_destinazione'].'</h5>
+                    <p class="card-text">'.$row['posti_disponibili'].' posti disponibili</p>
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">Data partenza: '.$row['data_partenza'].'</li>
+                    <li class="list-group-item">Data destinazione: '.$row['data_arrivo'].'</li>
+                    <li class="list-group-item">Contributo economico: '.$row['contributo_economico'].'€</li>
+                </ul>
+                <div class="card-body">
+                    ';
 
-    
-            echo '    </tbody>
-        </table>';
+                echo "<a href='client/trips/trip_page.php?id={$row['id']}&start={$row['id_partenza']}&end={$row['id_destinazione']}&driver={$row['driver_id']}' class='btn btn-primary'>Prenota ora</a>
+                </div>
+            </div>";
+            }
         } else {
             echo '
             <div class="text-center">

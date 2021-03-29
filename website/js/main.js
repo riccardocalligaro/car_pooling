@@ -1,5 +1,10 @@
 $(document).ready(function () {
   $("#search_btn").click(function () {
+    if (!$("#search").hasClass("col-lg-6 col-md-12 col-sm-12")) {
+      $("#search").addClass("col-lg-6 col-md-12 col-sm-12");
+    }
+    $("#results").removeClass('d-none');
+
     $.ajax({
       type: "POST",
       url: "client/search/search.php",

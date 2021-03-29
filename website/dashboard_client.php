@@ -30,7 +30,7 @@ if (!(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true && $_SESSIO
                         <a class="nav-link active" aria-current="page" href="#">Dashboard</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">I miei viaggi</a>
+                        <a class="nav-link" href="client/trips/trips_page.php">I miei viaggi</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="client/settings/settings_page.php">Impostazioni</a>
@@ -39,10 +39,12 @@ if (!(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true && $_SESSIO
             </div>
         </div>
     </nav>
-    <div class="row mt-5 pe-2 ps-2 vertical-center">
-        <div class="col-lg-6 col-md-12 col-sm-12 text-center">
-            <h1 class="title mx-auto">Ricerca un viaggio</h1>
-            <p class="paragraph">Immetti i dati di un viaggio per trovare l'orario che più ti soddisfa</p>
+    <div class="row p-5">
+        <div id="search" class="text-center">
+        
+        <img class="mb-5" height="250px" src="./assets/illustrations/undraw_Location_search_re_ttoj.svg" alt="" srcset="">
+            <h3 class="title mx-auto">Ricerca un viaggio</h3>
+            <h5>Immetti i dati di un viaggio per trovare l'orario che più ti soddisfa</h5>
             <div class="cl2 mt-5">
                 <form action="#" class="mx-auto">
                     <div class="row">
@@ -59,17 +61,16 @@ if (!(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true && $_SESSIO
                         <label for="inputDate" class="form-label">Data</label>
                         <input type="date" class="form-control" id="inputDate">
                     </div>
-                    <a class="btn btn-primary w-100" id="search_btn">Ricerca</a>
+                    <a class="btn btn-lg btn-primary w-100" id="search_btn">Ricerca</a>
                 </form>
             </div>
         </div>
-        <div class="col-lg-6 col-md-12 col-sm-12 text-center">
-            <!-- Se non ci sono ancora dati visualizzare l'illustrazione, se ci sono i dati visualizzare la tabella -->
-            <div class="table-responsive" id="results">
-                <img class="mt-5 responsive w-75 mx-auto" src="./assets/illustrations/To_do.svg" alt="" srcset="">
-            </div>
+        <div id="results" class="d-none text-center col-lg-5 col-md-12 col-sm-12">
+            <!-- <img class="mt-5 responsive w-75 mx-auto" src="./assets/illustrations/To_do.svg" alt="" srcset=""> -->
         </div>
+    </div>
     </div>
 
 </body>
+
 </html>
