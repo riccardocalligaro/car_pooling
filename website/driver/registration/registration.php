@@ -33,7 +33,8 @@ cp_head('Registrazione', '../../');
     <div class="row vertical-center">
         <div class="col-sm-12 col-md-12 col-lg-6 cl1">
             <h1 class="title mx-auto mb-lg-3">Registrati come autista</h1>
-            <p class="paragraph d-none d-md-block mx-auto">Entra nel fantastico mondo del car pooling, basta un click per prenotare un viaggio con uno dei nostri eccellenti autisti.</p>
+            <p class="paragraph d-none d-md-block mx-auto">Entra nel fantastico mondo del car pooling, basta un click
+                per diventare un autista</p>
             <img class="d-block pt-5 mx-auto" height="400px" src="../../assets/illustrations/undraw_fast_car_p4cu.svg" alt=""
                 srcset="">
         </div>

@@ -1,18 +1,33 @@
 :root {
   --paragraph-color: #2f2e41;
   --primary: #6c63ff;
+  --h2-color: #ff6584;
   --paragraph-font-family: Montserrat;
   --paragraph-font-weight: Light;
+  --h2-font-weight: 500;
   --title-font-family: Montserrat, sans-serif;
   --title-font-weight: Bold;
   --paragraph-font-size: 32px;
   --title-font-size: 54px;
+  --h2-font-size: 32px;
   width: auto;
 }
 
 body {
   font-family: var(--title-font-family);
   width: 100%;
+}
+
+h2 {
+  font-size: var(--h2-font-size);
+  font-weight: var(--h2-font-weight);
+  color: var(--h2-color);
+}
+
+table {
+  th {
+    color: var(--primary);
+  }
 }
 
 .label {
@@ -77,8 +92,8 @@ body {
   //height: auto;
 }
 
-table {
-  th {
-    color: var(--primary);
+.dashboard-info {
+  p{
+    font-size: 25px!important;
   }
 }
