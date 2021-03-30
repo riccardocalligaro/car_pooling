@@ -1,7 +1,7 @@
 :root {
   --paragraph-color: #2f2e41;
   --primary: #6c63ff;
-  --h2-color: #ff6584;
+  --h2-color: #2f2e41;
   --paragraph-font-family: Montserrat;
   --paragraph-font-weight: Light;
   --h2-font-weight: 500;
@@ -33,7 +33,7 @@ table th {
 }
 
 .vertical-center {
-  min-height: 100%;
+  min-height: 90%;
   /* Fallback for browsers do NOT support vh unit */
   min-height: 90vh;
   /* These two lines are counted as one :-)       */
@@ -92,5 +92,17 @@ table th {
 
 .dashboard-info p {
   font-size: 25px !important;
+}
+
+.form-control:focus {
+  border-color: var(--primary);
+  -webkit-box-shadow: 0 0 0 0.2rem rgba(108, 99, 255, 0.25);
+          box-shadow: 0 0 0 0.2rem rgba(108, 99, 255, 0.25);
+}
+
+.btn-primary:hover, .btn-primary:focus, .btn-primary:active, .btn-primary.active, .open > .dropdown-toggle.btn-primary {
+  border-color: var(--primary);
+  -webkit-box-shadow: 0 0 0 0.2rem rgba(108, 99, 255, 0.25);
+          box-shadow: 0 0 0 0.2rem rgba(108, 99, 255, 0.25);
 }
 /*# sourceMappingURL=style.css.map */
