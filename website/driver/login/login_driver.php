@@ -14,7 +14,7 @@ cp_head('Login', '../../');
 session_start();
  
 // Check if the user is already logged in, if yes then redirect him to welcome page
-if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true && $_SESSION["type"] === 1){
+if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true && $_SESSION["type"] === 1) {
     header("location: ../../dashboard_driver.php");
     exit;
 }
@@ -27,28 +27,28 @@ $username = $password = "";
 $username_err = $password_err = $login_err = "";
  
 // Processing form data when form is submitted
-if($_SERVER["REQUEST_METHOD"] == "POST"){
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // Check if username is empty
-    if(empty(trim($_POST["codice_fiscale"]))){
+    if (empty(trim($_POST["codice_fiscale"]))) {
         $username_err = "Inserisci il codice fiscale.";
-    } else{
+    } else {
         $username = trim($_POST["codice_fiscale"]);
     }
     
     // Check if password is empty
-    if(empty(trim($_POST["password"]))){
+    if (empty(trim($_POST["password"]))) {
         $password_err = "Inserisci la password.";
-    } else{
+    } else {
         $password = trim($_POST["password"]);
     }
     
     // Validate credentials
-    if(empty($username_err) && empty($password_err)){
+    if (empty($username_err) && empty($password_err)) {
         // Prepare a select statement
         $sql = "SELECT id, codice_fiscale, password FROM autista WHERE codice_fiscale = ?";
         
-        if($stmt = $conn->prepare($sql)){
+        if ($stmt = $conn->prepare($sql)) {
             // Bind variables to the prepared statement as parameters
             $stmt->bind_param("s", $param_username);
             
@@ -56,40 +56,44 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             $param_username = $username;
             
             // Attempt to execute the prepared statement
-            if($stmt->execute()){
+            if ($stmt->execute()) {
                 // Store result
                 $stmt->store_result();
                 
                 // Check if username exists, if yes then verify password
-                if($stmt->num_rows == 1){                    
+                if ($stmt->num_rows == 1) {
                     // Bind result variables
                     $stmt->bind_result($id, $username, $hashed_password);
-                    if($stmt->fetch()){
-                        if(password_verify($password, $hashed_password)){
+                    if ($stmt->fetch()) {
+                        if (password_verify($password, $hashed_password)) {
                             // Password is correct, so start a new session
+                            if (isset($_SESSION["loggedin"])) {
+                                session_destroy();
+                            }
+
                             session_start();
                             
                             // Store data in session variables
                             $_SESSION["loggedin"] = true;
                             $_SESSION["id"] = $id;
                             $_SESSION["username"] = $username;
-                            $_SESSION["type"] = 1;                            
+                            $_SESSION["type"] = 1;
                           
                             
-                            // Redirect user to welcome page
+                        // Redirect user to welcome page
                             // header("location: ../../dashboard_driver.php");
-                        } else{
+                        } else {
                             // Password is not valid, display a generic error message
                             $login_err = "Username o password non valido.";
                             echo $login_err;
                         }
                     }
-                } else{
+                } else {
                     // Username doesn't exist, display a generic error message
                     $login_err = "Username o password non valido.";
                     echo $login_err;
                 }
-            } else{
+            } else {
                 echo "Oops! Errore. Riprova più tardi.";
             }
 
@@ -97,6 +101,5 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             $stmt->close();
         }
     }
-
 }
 ?>

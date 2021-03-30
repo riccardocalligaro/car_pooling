@@ -1,7 +1,6 @@
 :root {
   --paragraph-color: #2f2e41;
   --primary: #6c63ff;
-  --h2-color: #ff6584;
   --paragraph-font-family: Montserrat;
   --paragraph-font-weight: Light;
   --h2-font-weight: 500;
@@ -20,7 +19,6 @@ body {
 h2 {
   font-size: var(--h2-font-size);
   font-weight: var(--h2-font-weight);
-  color: var(--h2-color);
 }
 
 table th {
@@ -92,4 +90,6 @@ table th {
 .dashboard-info p {
   font-size: 25px !important;
 }
+
+
 /*# sourceMappingURL=style.css.map */
