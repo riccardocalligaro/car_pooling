@@ -1,5 +1,5 @@
-# Car Poolin
+# Car Pooling
 - Riccardo Calligaro
 - Jacopo Ferian
-- Filippo Veggo
+- Filippo Veggo   
 

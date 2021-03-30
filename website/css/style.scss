@@ -1,7 +1,7 @@
 :root {
   --paragraph-color: #2f2e41;
   --primary: #6c63ff;
-  --h2-color: #ff6584;
+  --h2-color: #2f2e41;
   --paragraph-font-family: Montserrat;
   --paragraph-font-weight: Light;
   --h2-font-weight: 500;
@@ -35,7 +35,7 @@ table {
 }
 
 .vertical-center {
-  min-height: 100%; /* Fallback for browsers do NOT support vh unit */
+  min-height: 90%; /* Fallback for browsers do NOT support vh unit */
   min-height: 90vh; /* These two lines are counted as one :-)       */
 
   display: flex;
@@ -96,4 +96,14 @@ table {
   p{
     font-size: 25px!important;
   }
+}
+
+.form-control:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 0.2rem rgba(108, 99, 255, 0.25);
+} 
+
+.btn-primary:hover, .btn-primary:focus, .btn-primary:active, .btn-primary.active, .open>.dropdown-toggle.btn-primary{
+  border-color: var(--primary);
+  box-shadow: 0 0 0 0.2rem rgba(108, 99, 255, 0.25);
 }
