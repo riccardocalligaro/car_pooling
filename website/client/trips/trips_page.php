@@ -60,7 +60,7 @@ cp_head('I miei viaggi', '../../');
                     CONCAT(autista.nome, ' ', autista.cognome) as 'autista_nominativo',
                     -- viaggio
                     viaggio.contributo_economico, viaggi_autisti.posti_disponibili, viaggi_autisti.data_partenza, viaggi_autisti.data_arrivo,
-                    viaggi_passeggeri.stato, viaggi_passeggeri.id, viaggi_autisti.stato as 'stato_viaggio',
+                    viaggi_passeggeri.stato, viaggi_passeggeri.id as 'id_viaggio_recensione', viaggi_autisti.stato as 'stato_viaggio',
                     autista.id as 'id_autista'
                     FROM viaggi_passeggeri
                     INNER JOIN viaggi_autisti ON viaggi_autisti.id = viaggi_passeggeri.viaggio_autista_id
@@ -75,6 +75,11 @@ cp_head('I miei viaggi', '../../');
                     $stmt->execute();
 
                     if ($res = $stmt->get_result()) {
+                        if ($res -> num_rows == 0) {
+                            echo '<img class="mt-5 responsive" src="../../assets/illustrations/To_do.svg" alt="" srcset="">';
+                            echo '<h2 class="text-center pt-5" style="font-size: 23px;">Non hai nessuna viaggio</h2>';
+                        }
+ 
                         while ($row = $res->fetch_assoc()) {
                             echo ' <div class="card text-start mt-3 card-size">
                 <div class="card-header">
@@ -92,9 +97,9 @@ cp_head('I miei viaggi', '../../');
                 </ul>
                     ';
 
-                            if ($row['stato_viaggio'] === 1 && $row['stato'] === 1) {
+                            if ($row['stato_viaggio'] === 2 && $row['stato'] === 1) {
                                 echo '  <div class="card-body">
-                                <a href="leave_review.php?ride='.$row['stato_viaggio'].'&driver='.$row['id_autista'].'" class="btn btn-primary">Lascia una recensione</a>
+                                <a href="leave_review.php?ride='.$row['id_viaggio_recensione'].'&driver='.$row['id_autista'].'" class="btn btn-primary">Lascia una recensione</a>
                                 </div>';
                             }
                             echo '</div>';

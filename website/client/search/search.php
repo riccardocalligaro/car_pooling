@@ -24,6 +24,7 @@ $query = "SELECT viaggi_autisti.posti_disponibili, viaggio.contributo_economico,
     INNER JOIN autista ON viaggi_autisti.autista_id = autista.id
     INNER JOIN automobile ON viaggi_autisti.automobile_targa = automobile.targa
     WHERE viaggio.citta_partenza = partenza.id AND viaggio.citta_destinazione = destinazione.id AND viaggi_autisti.prenotazioni_aperte = true
+    AND viaggi_autisti.stato = 0
     ORDER BY viaggi_autisti.data_creazione DESC
     ";
 

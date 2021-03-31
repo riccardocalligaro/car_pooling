@@ -77,8 +77,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                             $_SESSION["type"] = 1;
                           
                             
-                        // Redirect user to welcome page
-                            // header("location: ../../dashboard_driver.php");
+                            header("location: ../../dashboard_driver.php");
                         } else {
                             // Password is not valid, display a generic error message
                             $login_err = "Username o password non valido.";
