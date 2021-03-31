@@ -107,3 +107,22 @@ table {
   border-color: var(--primary);
   box-shadow: 0 0 0 0.2rem rgba(108, 99, 255, 0.25);
 }
+
+.card-size{
+  @media screen and (min-width: 992px) {
+    .card{
+      max-width: 1000px!important;
+    }
+  }
+  @media screen and (max-width: 992px) {
+    margin-top: 2rem;
+  }
+}
+
+#results{
+  @media screen and (min-width: 992px) {
+    .card{
+      max-width: 1000px!important;
+    }
+  }
+}

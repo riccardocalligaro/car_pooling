@@ -19,9 +19,7 @@ if (!(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true && $_SESSIO
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container-fluid">
             <a class="navbar-brand" href="index.html">CarPooling</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-                aria-label="Toggle navigation">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -41,8 +39,8 @@ if (!(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true && $_SESSIO
     </nav>
     <div class="row p-5">
         <div id="search" class="text-center">
-        
-        <img class="mb-5" height="250px" src="./assets/illustrations/undraw_Location_search_re_ttoj.svg" alt="" srcset="">
+
+            <img class="mb-5 responsive" height="250px" src="./assets/illustrations/undraw_Location_search_re_ttoj.svg" alt="" srcset="">
             <h3 class="title mx-auto">Ricerca un viaggio</h3>
             <h5>Immetti i dati di un viaggio per trovare l'orario che più ti soddisfa</h5>
             <div class="cl2 mt-5">
@@ -65,7 +63,7 @@ if (!(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true && $_SESSIO
                 </form>
             </div>
         </div>
-        <div id="results" class="d-none text-center col-lg-5 col-md-12 col-sm-12">
+        <div id="results" class="d-none text-center col-lg-5 col-md-12 col-sm-12 mx-auto">
             <!-- <img class="mt-5 responsive w-75 mx-auto" src="./assets/illustrations/To_do.svg" alt="" srcset=""> -->
         </div>
     </div>

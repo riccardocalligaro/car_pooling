@@ -20,9 +20,7 @@ include_once('config.php');
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container-fluid">
             <a class="navbar-brand" href="index.html">CarPooling</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-                aria-label="Toggle navigation">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -40,15 +38,14 @@ include_once('config.php');
             </div>
         </div>
     </nav>
-    <div class="row mt-5 pe-2 ps-2">
+    <div class="row mt-5 pe-2 ps-2 w-100 mx-auto">
 
         <!-- start left side -->
         <div class="col-lg-6 col-md-12 col-sm-12">
 
             <!--  start header -->
             <div class="text-center">
-                <img class="mb-5" height="250px" src="./assets/illustrations/undraw_order_a_car_3tww.svg" alt=""
-                    srcset="">
+                <img class="mb-5 responsive" height="250px" src="./assets/illustrations/undraw_order_a_car_3tww.svg" alt="" srcset="">
                 <h3 class="title mx-auto">Aggiungi una corsa</h3>
                 <h5>Immetti i dati per creare una corsa e offrirla ai passeggeri</h5>
             </div>
@@ -68,8 +65,7 @@ include_once('config.php');
                         <div class="col-6">
                             <div class="mb-3">
                                 <label for="inputDestinationDate" class="form-label">Data arrivo</label>
-                                <input type="datetime-local" class="form-control" id="inputDestinationDate"
-                                    name="end_date">
+                                <input type="datetime-local" class="form-control" id="inputDestinationDate" name="end_date">
                             </div>
                         </div>
                     </div>
@@ -84,28 +80,27 @@ include_once('config.php');
 
                                     <?php
 
-                    
-                                # usiamo i prepared statement (sempre mysqli) per evitare injection
-                                $stmt = $conn->prepare("SELECT * FROM automobile WHERE autista_id = ?");
-                                $stmt->bind_param("i", $_SESSION['id']);
 
-                                $stmt->execute();
+                                    # usiamo i prepared statement (sempre mysqli) per evitare injection
+                                    $stmt = $conn->prepare("SELECT * FROM automobile WHERE autista_id = ?");
+                                    $stmt->bind_param("i", $_SESSION['id']);
 
-                                if ($res = $stmt->get_result()) {
-                                    while ($row = $res->fetch_assoc()) {
-                                        echo "<option>{$row['targa']}</option>";
+                                    $stmt->execute();
+
+                                    if ($res = $stmt->get_result()) {
+                                        while ($row = $res->fetch_assoc()) {
+                                            echo "<option>{$row['targa']}</option>";
+                                        }
                                     }
-                                }
 
-                                ?>
+                                    ?>
                                 </select>
                             </div>
                         </div>
                         <div class="col-6">
                             <div class="mb-3">
                                 <label for="inputPostiDisponibili" class="form-label">Posti disponibili</label>
-                                <input name="posti" type="number" step="1" min="1" class="form-control" id="inputPostiDisponibili"
-                                    name="end_date">
+                                <input name="posti" type="number" step="1" min="1" class="form-control" id="inputPostiDisponibili" name="end_date">
                             </div>
                         </div>
                     </div>
@@ -116,23 +111,23 @@ include_once('config.php');
                         <select class="form-control" id="viaggio" required="" name="viaggio">
 
                             <?php
-                                $stmt = $conn->prepare("SELECT t1.comune as 'comune_partenza', t2.comune as 'comune_destinazione', viaggio.id FROM viaggio
+                            $stmt = $conn->prepare("SELECT t1.comune as 'comune_partenza', t2.comune as 'comune_destinazione', viaggio.id FROM viaggio
                                 INNER JOIN citta t1 ON t1.istat = viaggio.citta_partenza
                                 INNER JOIN citta t2 ON t2.istat = viaggio.citta_destinazione
                                 WHERE viaggio.autista_id = ?
                                 ");
-                                $stmt->bind_param("i", $_SESSION['id']);
-                                # usiamo i prepared statement (sempre mysqli) per evitare injection
-                       
-                                $stmt->execute();
+                            $stmt->bind_param("i", $_SESSION['id']);
+                            # usiamo i prepared statement (sempre mysqli) per evitare injection
 
-                                if ($res = $stmt->get_result()) {
-                                    while ($row = $res->fetch_assoc()) {
-                                        echo "<option value='{$row['id']}'>{$row['comune_partenza']} - {$row['comune_destinazione']}</option>";
-                                    }
+                            $stmt->execute();
+
+                            if ($res = $stmt->get_result()) {
+                                while ($row = $res->fetch_assoc()) {
+                                    echo "<option value='{$row['id']}'>{$row['comune_partenza']} - {$row['comune_destinazione']}</option>";
                                 }
+                            }
 
-                                ?>
+                            ?>
                         </select>
                     </div>
                     <button class="btn btn-primary w-100" id="search_btn">Crea corsa</button>
@@ -144,27 +139,27 @@ include_once('config.php');
 
 
 
-        <div class="col">
+        <div class="col-lg-6 col-md-12 col-sm-12 mb-5 card-size">
             <?php
-                    include_once('config.php');
+            include_once('config.php');
 
 
-                    function stateText($state)
-                    {
-                        switch ($state) {
-                            case 0:
-                                return "in corso";
-                                break;
-                            case 1:
-                                return "annullato";
-                                break;
-                            case 2:
-                                return "concluso";
-                                break;
-                        }
-                    }
+            function stateText($state)
+            {
+                switch ($state) {
+                    case 0:
+                        return "in corso";
+                        break;
+                    case 1:
+                        return "annullato";
+                        break;
+                    case 2:
+                        return "concluso";
+                        break;
+                }
+            }
 
-                    $stmt = $conn->prepare("SELECT t1.comune as 'comune_partenza', t2.comune as 'comune_destinazione', viaggio.*, viaggi_autisti.id as 'id_viaggio', viaggi_autisti.stato,
+            $stmt = $conn->prepare("SELECT t1.comune as 'comune_partenza', t2.comune as 'comune_destinazione', viaggio.*, viaggi_autisti.id as 'id_viaggio', viaggi_autisti.stato,
                     viaggi_autisti.data_partenza, viaggi_autisti.data_arrivo, viaggi_autisti.posti_disponibili  FROM viaggi_autisti
                     INNER JOIN viaggio ON viaggio.id = viaggi_autisti.viaggio_id
                     INNER JOIN citta t1 ON t1.istat = viaggio.citta_partenza
@@ -172,40 +167,40 @@ include_once('config.php');
                     WHERE viaggi_autisti.autista_id = ?
                     ORDER BY viaggi_autisti.data_creazione DESC
                     ");
-                    $stmt->bind_param("i", $_SESSION['id']);
+            $stmt->bind_param("i", $_SESSION['id']);
 
 
-                    $stmt->execute();
+            $stmt->execute();
 
-                    if ($res = $stmt->get_result()) {
-                        if ($res->num_rows == 0) {
-                            echo '<img class="mt-5 responsive" src="./assets/illustrations/To_do.svg" alt="" srcset="">';
-                            echo '<h2 class="text-center pt-5" style="font-size: 23px;">Non hai nessuna corsa</h2>';
-                        }
+            if ($res = $stmt->get_result()) {
+                if ($res->num_rows == 0) {
+                    echo '<img class="mt-5 responsive" src="./assets/illustrations/To_do.svg" alt="" srcset="">';
+                    echo '<h2 class="text-center pt-5" style="font-size: 23px;">Non hai nessuna corsa</h2>';
+                }
 
-                        while ($row = $res->fetch_assoc()) {
-                            echo ' <div class="card text-start mt-3">
+                while ($row = $res->fetch_assoc()) {
+                    echo ' <div class="card text-start mt-3 mx-auto">
                 <div class="card-body">
-                    <h5 class="card-title">'.$row['comune_partenza'].' - '.$row['comune_destinazione'].'</h5>
-                    <p class="card-text">'.$row['posti_disponibili'].' posti disponibili</p>
+                    <h5 class="card-title">' . $row['comune_partenza'] . ' - ' . $row['comune_destinazione'] . '</h5>
+                    <p class="card-text">' . $row['posti_disponibili'] . ' posti disponibili</p>
                 </div>
                 <ul class="list-group list-group-flush">
-                    <li class="list-group-item">Stato: '.stateText($row['stato']).'</li>
-                    <li class="list-group-item">Data partenza: '.date('d-m-Y H:i', strtotime($row['data_partenza'])).'</li>
-                    <li class="list-group-item">Data destinazione: '.date('d-m-Y H:i', strtotime($row['data_arrivo'])).'</li>
-                    <li class="list-group-item">Contributo economico: '.$row['contributo_economico'].'€</li>
+                    <li class="list-group-item">Stato: ' . stateText($row['stato']) . '</li>
+                    <li class="list-group-item">Data partenza: ' . date('d-m-Y H:i', strtotime($row['data_partenza'])) . '</li>
+                    <li class="list-group-item">Data destinazione: ' . date('d-m-Y H:i', strtotime($row['data_arrivo'])) . '</li>
+                    <li class="list-group-item">Contributo economico: ' . $row['contributo_economico'] . '€</li>
                 </ul>
                 <div class="card-body">
-                <a href="driver/ride/passengers.php?ride='.$row['id_viaggio'].'" class="btn btn-primary">Visualizza passeggeri</a>
-                <a href="driver/ride/end_ride.php?ride='.$row['id_viaggio'].'" class="btn btn-primary">Segna come concluso</a>
-                <a href="driver/ride/cancel_ride.php?ride='.$row['id_viaggio'].'" class="btn btn-primary">Annulla</a>
+                <a href="driver/ride/passengers.php?ride=' . $row['id_viaggio'] . '" class="btn btn-primary mb-1">Visualizza passeggeri</a>
+                <a href="driver/ride/end_ride.php?ride=' . $row['id_viaggio'] . '" class="btn btn-primary mb-1">Segna come concluso</a>
+                <a href="driver/ride/cancel_ride.php?ride=' . $row['id_viaggio'] . '" class="btn btn-primary mb-1">Annulla</a>
                 </div>
                 </div>
                     ';
-                        }
-                    }
+                }
+            }
 
-                    ?>
+            ?>
 
         </div>
     </div>

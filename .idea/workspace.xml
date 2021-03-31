@@ -2,8 +2,21 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1631b25d-a390-4ffc-8895-3bf32434a493" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/client/login/login.php" beforeDir="false" afterPath="$PROJECT_DIR$/website/client/login/login.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/client/registration/registration.php" beforeDir="false" afterPath="$PROJECT_DIR$/website/client/registration/registration.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/website/client/search/search.php" beforeDir="false" afterPath="$PROJECT_DIR$/website/client/search/search.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/client/trips/trip_page.php" beforeDir="false" afterPath="$PROJECT_DIR$/website/client/trips/trip_page.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/client/trips/trips_page.php" beforeDir="false" afterPath="$PROJECT_DIR$/website/client/trips/trips_page.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/website/css/style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/css/style.css.map" beforeDir="false" afterPath="$PROJECT_DIR$/website/css/style.css.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/css/style.scss" beforeDir="false" afterPath="$PROJECT_DIR$/website/css/style.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/website/dashboard_client.php" beforeDir="false" afterPath="$PROJECT_DIR$/website/dashboard_client.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/dashboard_driver.php" beforeDir="false" afterPath="$PROJECT_DIR$/website/dashboard_driver.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/driver/login/login.php" beforeDir="false" afterPath="$PROJECT_DIR$/website/driver/login/login.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/driver/registration/registration.php" beforeDir="false" afterPath="$PROJECT_DIR$/website/driver/registration/registration.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/driver/trips/trips_page.php" beforeDir="false" afterPath="$PROJECT_DIR$/website/driver/trips/trips_page.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/login.php" beforeDir="false" afterPath="$PROJECT_DIR$/website/login.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -11,11 +24,13 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="ComposerSettings">
+    <pharConfigPath>$PROJECT_DIR$/composer.json</pharConfigPath>
     <execution />
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="PhpWorkspaceProjectConfiguration" interpreter_name="PHP" />
   <component name="ProjectId" id="1qQDls5RP1IWsx4RO20wQKG8TXe" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -36,20 +51,11 @@
       <option name="presentableId" value="Default" />
       <updated>1617003075325</updated>
       <workItem from="1617003077513" duration="729000" />
+      <workItem from="1617184632576" duration="3708000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
-  </component>
-  <component name="WindowStateProjectService">
-    <state x="1348" y="509" key="#SQL_Dialects" timestamp="1617003138855">
-      <screen x="0" y="25" width="3440" height="1370" />
-    </state>
-    <state x="1348" y="509" key="#SQL_Dialects/0.25.3440.1370@0.25.3440.1370" timestamp="1617003138855" />
-    <state x="1583" y="338" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1617003156799">
-      <screen x="0" y="25" width="3440" height="1370" />
-    </state>
-    <state x="1583" y="338" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.25.3440.1370@0.25.3440.1370" timestamp="1617003156799" />
   </component>
 </project>

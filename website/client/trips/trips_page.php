@@ -76,7 +76,7 @@ cp_head('I miei viaggi', '../../');
 
                     if ($res = $stmt->get_result()) {
                         while ($row = $res->fetch_assoc()) {
-                            echo ' <div class="card text-start mt-3">
+                            echo ' <div class="card text-start mt-3 card-size">
                 <div class="card-header">
                 '.$row['autista_nominativo'].'
       </div>

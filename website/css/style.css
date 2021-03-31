@@ -8,7 +8,8 @@
   --title-font-family: Montserrat, sans-serif;
   --title-font-weight: Bold;
   --paragraph-font-size: 32px;
-  --title-font-size: 42px;
+  --title-font-size: 54px;
+  --h2-font-size: 32px;
   width: auto;
 }
 
@@ -20,6 +21,7 @@ body {
 h2 {
   font-size: var(--h2-font-size);
   font-weight: var(--h2-font-weight);
+  color: var(--h2-color);
 }
 
 table th {
@@ -103,5 +105,22 @@ table th {
   -webkit-box-shadow: 0 0 0 0.2rem rgba(108, 99, 255, 0.25);
           box-shadow: 0 0 0 0.2rem rgba(108, 99, 255, 0.25);
 }
-/*# sourceMappingURL=style.css.map */
 
+@media screen and (min-width: 992px) {
+  .card-size .card {
+    max-width: 1000px !important;
+  }
+}
+
+@media screen and (max-width: 992px) {
+  .card-size {
+    margin-top: 2rem;
+  }
+}
+
+@media screen and (min-width: 992px) {
+  #results .card {
+    max-width: 1000px !important;
+  }
+}
+/*# sourceMappingURL=style.css.map */

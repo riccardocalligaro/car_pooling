@@ -32,7 +32,7 @@ cp_head('Login', '../../');
         <div class="col-sm-12 col-md-12 col-lg-6 cl1">
             <h1 class="title mx-auto mb-lg-3">Effettua l'accesso ora</h1>
             <p class=" text-center paragraph d-none d-md-block mx-auto">Entra nel mondo del car pooling, con un click prenoti un viaggio</p>
-            <img class="d-block pt-5 mx-auto" height="400px" src="../../assets/illustrations/undraw_Order_ride_re_372k.svg" alt="" srcset="">
+            <img class="d-block pt-5 mx-auto responsives" height="400px" src="../../assets/illustrations/undraw_Order_ride_re_372k.svg" alt="" srcset="">
         </div>
         <div class="col-lg-6 cl2 center">
             <form action="login_client.php" method="post" class="mx-auto">
