@@ -25,11 +25,12 @@ $viaggio = $_POST['viaggio'];
 
 $permissions = 0;
 $money = 0;
+$stato = 0;
 
-$stmt = $conn->prepare("INSERT INTO viaggi_autisti (data_partenza, data_arrivo, autista_id, automobile_targa, prenotazioni_aperte, viaggio_id, posti_disponibili, data_creazione)
-VALUES (?, ?, ?, ?, ?, ?, ?, NOW())");
+$stmt = $conn->prepare("INSERT INTO viaggi_autisti (data_partenza, data_arrivo, autista_id, automobile_targa, prenotazioni_aperte, viaggio_id, posti_disponibili, data_creazione, stato)
+VALUES (?, ?, ?, ?, ?, ?, ?, NOW(), ?)");
 
-$stmt->bind_param("ssisiii", $start_date, $end_date, $driver_id, $targa, $prenotazioni_aperte, $viaggio, $posti);
+$stmt->bind_param("ssisiiii", $start_date, $end_date, $driver_id, $targa, $prenotazioni_aperte, $viaggio, $posti, $stato);
 $rc = $stmt->execute();
 
 

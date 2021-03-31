@@ -3,6 +3,7 @@
 
 
 <?php
+session_start();
 include_once('../../base.php');
 
 cp_head('I miei viaggi', '../../');
@@ -34,7 +35,7 @@ cp_head('I miei viaggi', '../../');
     </nav>
 
     <div class="container">
-    <?php
+        <?php
                     include_once('../../config.php');
 
                     function stateText($state)
@@ -47,42 +48,61 @@ cp_head('I miei viaggi', '../../');
                                 return "confermato";
                                 break;
                             case 2:
+                                return "recensito";
+                                break;
+                            case 3:
                                 return "rifiutato";
                                 break;
                         }
                     }
-
-                    $stmt = $conn->prepare("SELECT * FROM viaggi_passeggeri
-                    INNER JOIN viaggi_autisti ON viaggi_autisti.viaggio_id = viaggi_passeggeri.viaggio_autista_id 
-                    INNER JOIN viaggio on viaggi_autisti.viaggio_id = viaggio.id
-                    INNER JOIN autista on viaggi_autisti.autista_id = autista.id
+                    $stmt = $conn->prepare("SELECT t1.comune as 'citta_partenza', t2.comune as 'citta_destinazione',
+                    -- autista
+                    CONCAT(autista.nome, ' ', autista.cognome) as 'autista_nominativo',
+                    -- viaggio
+                    viaggio.contributo_economico, viaggi_autisti.posti_disponibili, viaggi_autisti.data_partenza, viaggi_autisti.data_arrivo,
+                    viaggi_passeggeri.stato, viaggi_passeggeri.id, viaggi_autisti.stato as 'stato_viaggio',
+                    autista.id as 'id_autista'
+                    FROM viaggi_passeggeri
+                    INNER JOIN viaggi_autisti ON viaggi_autisti.id = viaggi_passeggeri.viaggio_autista_id
+                    INNER JOIN autista ON viaggi_autisti.autista_id = autista.id
+                    INNER JOIN viaggio ON viaggi_autisti.viaggio_id = viaggio.id
+                    INNER JOIN citta t1 ON t1.istat = viaggio.citta_partenza
+                    INNER JOIN citta t2 ON t2.istat = viaggio.citta_destinazione
+                    WHERE viaggi_passeggeri.passeggero_id = ?
+                    ORDER BY viaggi_passeggeri.data_creazione DESC
                     ");
-
+                    $stmt->bind_param("i", $_SESSION['id']);
                     $stmt->execute();
 
                     if ($res = $stmt->get_result()) {
                         while ($row = $res->fetch_assoc()) {
                             echo ' <div class="card text-start mt-3">
                 <div class="card-header">
-                '.$row['nome'].' '.$row['cognome'].' 
+                '.$row['autista_nominativo'].'
       </div>
                 <div class="card-body">
                     <h5 class="card-title">'.$row['citta_partenza'].' - '.$row['citta_destinazione'].'</h5>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                        cards content.</p>
+                    <p class="card-text">Ancora '.$row['posti_disponibili'].' posti disponibili</p>
                 </div>
                 <ul class="list-group list-group-flush">
                     <li class="list-group-item">Stato: '.stateText($row['stato']).'</li>
-                    <li class="list-group-item">Data partenza: '.$row['data_partenza'].'</li>
-                    <li class="list-group-item">Data destinazione: '.$row['data_arrivo'].'</li>
+                    <li class="list-group-item">Data partenza: '.date('d-m-Y H:i', strtotime($row['data_partenza'])).'</li>
+                    <li class="list-group-item">Data destinazione: '.date('d-m-Y H:i', strtotime($row['data_arrivo'])).'</li>
                     <li class="list-group-item">Contributo economico: '.$row['contributo_economico'].'€</li>
                 </ul>
                     ';
+
+                            if ($row['stato_viaggio'] === 1 && $row['stato'] === 1) {
+                                echo '  <div class="card-body">
+                                <a href="leave_review.php?ride='.$row['stato_viaggio'].'&driver='.$row['id_autista'].'" class="btn btn-primary">Lascia una recensione</a>
+                                </div>';
+                            }
+                            echo '</div>';
                         }
                     }
 
                     ?>
-</div>
+    </div>
 </body>
 
 </html>

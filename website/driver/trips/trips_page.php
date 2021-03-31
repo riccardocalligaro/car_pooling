@@ -43,7 +43,7 @@ include_once('../../config.php');
     <div class="container">
         <!--  start header -->
         <div class="text-center">
-            <img class="mb-5" height="250px" src="../../assets/illustrations/undraw_best_place_r685.svg" alt=""
+            <img class="mb-5 mt-5" height="250px" src="../../assets/illustrations/undraw_best_place_r685.svg" alt=""
                 srcset="">
             <h3 class="title mx-auto">Aggiungi una viaggio</h3>
             <h5>Crea un viaggio generico per le tue corse</h5>
@@ -52,7 +52,7 @@ include_once('../../config.php');
 
         <div class=" mt-5">
             <!-- start ride form -->
-            <form action="driver/ride/send_ride.php" method="post" class="mx-auto">
+            <form action="send_trip.php" method="post" class="mx-auto">
                 <!-- start dates -->
                 <div class="row">
                     <div class="mb-3 col-lg-2 col-sm-12">
@@ -101,6 +101,26 @@ include_once('../../config.php');
                                     name="citta_arrivo"></select>
                             </div>
                     </div>
+
+                    <div class="row mb-3">
+                        <div class="col-4">
+                            <label for="permessi" class="form-label">Permessi</label>
+                            <select class="form-control custom-select provincia-select" id="permessi" required=""
+                                name="permessi">
+                                <option value='0'>Permesso 1</option>";
+                            </select>
+                        </div>
+                        <div class="col-4">
+                            <label for="contributo_economico" class="form-label">Contributo economico (euro)</label>
+                            <input type="number" min="0" class="form-control"
+                                id="contributo_economico" name="contributo_economico">
+                        </div>
+                        <div class="col-4">
+                            <label for="permessi" class="form-label">Tempo stimato (minuti)</label>
+                            <input type="number" min="0" step="1" class="form-control"
+                                id="contributo_economico" name="tempo_stimato">
+                        </div>
+                    </div>
                 </div>
                 <button class="btn btn-primary w-100" id="search_btn">Crea viaggio</button>
             </form>
@@ -108,47 +128,45 @@ include_once('../../config.php');
         </div>
         <!-- end left side -->
 
-        <?php
+        <div class="container">
+            <?php
 
-                    $stmt = $conn->prepare("SELECT t1.comune as 'comune_partenza', t2.comune as 'comune_destinazione', viaggio.*, viaggi_autisti.* FROM viaggi_autisti
-                    INNER JOIN viaggio ON viaggio.id = viaggi_autisti.viaggio_id
-                    INNER JOIN citta t1 ON t1.istat = viaggio.citta_partenza
-                    INNER JOIN citta t2 ON t2.istat = viaggio.citta_destinazione
-                    WHERE viaggi_autisti.autista_id = ?
-                    ORDER BY viaggi_autisti.data_creazione
-                    ");
-                    $stmt->bind_param("i", $_SESSION['id']);
+$stmt = $conn->prepare("SELECT t1.comune as 'comune_partenza', t2.comune as 'comune_destinazione', viaggio.* FROM viaggio
+INNER JOIN citta t1 ON t1.istat = viaggio.citta_partenza
+INNER JOIN citta t2 ON t2.istat = viaggio.citta_destinazione
+WHERE viaggio.autista_id = ?
+");
+$stmt->bind_param("i", $_SESSION['id']);
 
 
-                    $stmt->execute();
+$stmt->execute();
 
-                    if ($res = $stmt->get_result()) {
-                        if ($res->num_rows == 0) {
-                            echo '<img class="mt-5 responsive" src="./assets/illustrations/To_do.svg" alt="" srcset="">';
-                            echo '<h2 class="text-center pt-5" style="font-size: 23px;">Non hai nessuna corsa</h2>';
-                        }
+if ($res = $stmt->get_result()) {
+    if ($res->num_rows == 0) {
+        echo '<img class="mt-5 responsive" src="./assets/illustrations/To_do.svg" alt="" srcset="">';
+        echo '<h2 class="text-center pt-5" style="font-size: 23px;">Non hai nessuna corsa</h2>';
+    }
 
-                        while ($row = $res->fetch_assoc()) {
-                            echo ' <div class="card text-start mt-3">
-                <div class="card-body">
-                    <h5 class="card-title">'.$row['comune_partenza'].' - '.$row['comune_destinazione'].'</h5>
-                    <p class="card-text">'.$row['posti_disponibili'].' posti disponibili</p>
-                </div>
-                <ul class="list-group list-group-flush">
-                    <li class="list-group-item">Data partenza: '.date('d-m-Y H:i', strtotime($row['data_partenza'])).'</li>
-                    <li class="list-group-item">Data destinazione: '.date('d-m-Y H:i', strtotime($row['data_arrivo'])).'</li>
-                    <li class="list-group-item">Contributo economico: '.$row['contributo_economico'].'€</li>
-                </ul>
-                <div class="card-body">
-                <a href="" class="btn btn-primary">Visualizza passeggeri</a>
-                    <a href="" class="btn btn-primary">Modifica</a>
+    while ($row = $res->fetch_assoc()) {
+        echo ' <div class="card text-start mt-3">
+<div class="card-body">
+<h5 class="card-title">'.$row['comune_partenza'].' - '.$row['comune_destinazione'].'</h5>
+<p class="card-text">Tempo stimato di '.$row['tempo_stimato'].' minuti</p>
 </div>
-                </div>
-                    ';
-                        }
-                    }
+<ul class="list-group list-group-flush">
+<li class="list-group-item">Contributo economico: '.$row['contributo_economico'].'€</li>
 
-                    ?>
+</ul>
+<div class="card-body">
+<a href="" class="btn btn-primary">Elimina</a>
+</div>
+</div>
+';
+    }
+}
+
+?>
+        </div>
 
     </div>
     </div>

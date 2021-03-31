@@ -92,9 +92,6 @@ table th {
   font-size: 25px !important;
 }
 
-<<<<<<< HEAD
-
-=======
 .form-control:focus {
   border-color: var(--primary);
   -webkit-box-shadow: 0 0 0 0.2rem rgba(108, 99, 255, 0.25);
@@ -106,5 +103,5 @@ table th {
   -webkit-box-shadow: 0 0 0 0.2rem rgba(108, 99, 255, 0.25);
           box-shadow: 0 0 0 0.2rem rgba(108, 99, 255, 0.25);
 }
->>>>>>> f62612cff89fc04a1991eefc24d2220a150fdaa4
 /*# sourceMappingURL=style.css.map */
+

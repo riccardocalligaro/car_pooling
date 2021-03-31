@@ -149,14 +149,28 @@ include_once('config.php');
                     include_once('config.php');
 
 
+                    function stateText($state)
+                    {
+                        switch ($state) {
+                            case 0:
+                                return "in corso";
+                                break;
+                            case 1:
+                                return "annullato";
+                                break;
+                            case 2:
+                                return "concluso";
+                                break;
+                        }
+                    }
 
-
-                    $stmt = $conn->prepare("SELECT t1.comune as 'comune_partenza', t2.comune as 'comune_destinazione', viaggio.*, viaggi_autisti.* FROM viaggi_autisti
+                    $stmt = $conn->prepare("SELECT t1.comune as 'comune_partenza', t2.comune as 'comune_destinazione', viaggio.*, viaggi_autisti.id as 'id_viaggio', viaggi_autisti.stato,
+                    viaggi_autisti.data_partenza, viaggi_autisti.data_arrivo, viaggi_autisti.posti_disponibili  FROM viaggi_autisti
                     INNER JOIN viaggio ON viaggio.id = viaggi_autisti.viaggio_id
                     INNER JOIN citta t1 ON t1.istat = viaggio.citta_partenza
                     INNER JOIN citta t2 ON t2.istat = viaggio.citta_destinazione
                     WHERE viaggi_autisti.autista_id = ?
-                    ORDER BY viaggi_autisti.data_creazione
+                    ORDER BY viaggi_autisti.data_creazione DESC
                     ");
                     $stmt->bind_param("i", $_SESSION['id']);
 
@@ -176,14 +190,16 @@ include_once('config.php');
                     <p class="card-text">'.$row['posti_disponibili'].' posti disponibili</p>
                 </div>
                 <ul class="list-group list-group-flush">
+                    <li class="list-group-item">Stato: '.stateText($row['stato']).'</li>
                     <li class="list-group-item">Data partenza: '.date('d-m-Y H:i', strtotime($row['data_partenza'])).'</li>
                     <li class="list-group-item">Data destinazione: '.date('d-m-Y H:i', strtotime($row['data_arrivo'])).'</li>
                     <li class="list-group-item">Contributo economico: '.$row['contributo_economico'].'€</li>
                 </ul>
                 <div class="card-body">
-                <a href="" class="btn btn-primary">Visualizza passeggeri</a>
-                    <a href="" class="btn btn-primary">Modifica</a>
-</div>
+                <a href="driver/ride/passengers.php?ride='.$row['id_viaggio'].'" class="btn btn-primary">Visualizza passeggeri</a>
+                <a href="driver/ride/end_ride.php?ride='.$row['id_viaggio'].'" class="btn btn-primary">Segna come concluso</a>
+                <a href="driver/ride/cancel_ride.php?ride='.$row['id_viaggio'].'" class="btn btn-primary">Annulla</a>
+                </div>
                 </div>
                     ';
                         }
