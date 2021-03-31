@@ -31,10 +31,10 @@ include_once('../../config.php');
                         <a class="nav-link" aria-current="page" href="../../dashboard_driver.php">Dashboard</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" href="driver/trips/trips_page.php">I miei viaggi</a>
+                        <a class="nav-link active" href="trips_page.php">I miei viaggi</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="../../settings/settings_page.php">Impostazioni</a>
+                        <a class="nav-link" href="../settings/settings_page.php">Impostazioni</a>
                     </li>
                 </ul>
             </div>
@@ -104,12 +104,14 @@ include_once('../../config.php');
                         <div class="col-4">
                             <label for="permessi" class="form-label">Permessi</label>
                             <select class="form-control custom-select provincia-select" id="permessi" required="" name="permessi">
-                                <option value='0'>Permesso 1</option>";
+                                <option value='0'>Consentiti animali</option>
+                                <option value='0'>Consentite solo persone</option>
+
                             </select>
                         </div>
                         <div class="col-4">
                             <label for="contributo_economico" class="form-label">Contributo economico (euro)</label>
-                            <input type="number" min="0" class="form-control" id="contributo_economico" name="contributo_economico">
+                            <input type="number" min="0" class="form-control" id="contributo_economico" name="contributo_economico" value="0">
                         </div>
                         <div class="col-4">
                             <label for="permessi" class="form-label">Tempo stimato (minuti)</label>
@@ -123,7 +125,7 @@ include_once('../../config.php');
         </div>
         <!-- end left side -->
 
-        <div class="container">
+        <div class="container mb-3">
             <?php
 
             $stmt = $conn->prepare("SELECT t1.comune as 'comune_partenza', t2.comune as 'comune_destinazione', viaggio.* FROM viaggio
@@ -139,7 +141,7 @@ WHERE viaggio.autista_id = ?
             if ($res = $stmt->get_result()) {
                 if ($res->num_rows == 0) {
                     echo '<img class="mt-5 responsive" src="./assets/illustrations/To_do.svg" alt="" srcset="">';
-                    echo '<h2 class="text-center pt-5" style="font-size: 23px;">Non hai nessuna corsa</h2>';
+                    echo '<h2 class="text-center pt-5" style="font-size: 23px;">Non hai nessun viaggio</h2>';
                 }
 
                 while ($row = $res->fetch_assoc()) {
@@ -152,9 +154,6 @@ WHERE viaggio.autista_id = ?
 <li class="list-group-item">Contributo economico: ' . $row['contributo_economico'] . '€</li>
 
 </ul>
-<div class="card-body">
-<a href="" class="btn btn-primary">Elimina</a>
-</div>
 </div>
 ';
                 }

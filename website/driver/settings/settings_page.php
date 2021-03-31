@@ -46,7 +46,7 @@ cp_head('Impostazioni', '../../');
                     include_once('../../config.php');
 
                     # usiamo i prepared statement (sempre mysqli) per evitare injection
-                    $stmt = $conn->prepare("SELECT * FROM passeggero WHERE id=?");
+                    $stmt = $conn->prepare("SELECT * FROM autista WHERE id=?");
 
 
 
@@ -83,6 +83,7 @@ cp_head('Impostazioni', '../../');
                     }
 
                 ?>
+                <a href="add_car.php" class="btn btn-primary">Aggiungi auto</a>
 
                 <a href="../../logout.php" class="btn btn-primary">Logout</a>
             </div>

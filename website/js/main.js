@@ -17,7 +17,7 @@ $(document).ready(function () {
       type: "POST",
       url: "../../shared/provincia_search.php",
       data: {
-        provincia: $("#select_partenza").val(),
+        provincia: $("#select_arrivo").val(),
       },
     }).done(function (data) {
       $("#citta_arrivo").html(data);

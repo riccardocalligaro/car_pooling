@@ -91,7 +91,7 @@ include_once('config.php');
 
                                     if ($res = $stmt->get_result()) {
                                         while ($row = $res->fetch_assoc()) {
-                                            echo "<option>{$row['targa']}</option>";
+                                            echo "<option>{$row['nome']} - {$row['targa']}</option>";
                                         }
                                     }
 
@@ -102,7 +102,7 @@ include_once('config.php');
                         <div class="col-6">
                             <div class="mb-3">
                                 <label for="inputPostiDisponibili" class="form-label">Posti disponibili</label>
-                                <input name="posti" type="number" step="1" min="1" class="form-control" id="inputPostiDisponibili" name="end_date">
+                                <input name="posti" type="number" step="1" min="1" class="form-control" id="inputPostiDisponibili" name="end_date" value="1">
                             </div>
                         </div>
                     </div>
