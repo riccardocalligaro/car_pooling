@@ -21,7 +21,6 @@ $client_id = $_POST['client_id'];
 $stmt = $conn->prepare("INSERT INTO feedback_passeggero (valutazione, recensione, passeggero_id, autista_id) VALUES (?, ?, ?, ?)");
 $stmt->bind_param("isii", $valutazione, $comment, $client_id, $driver_id);
 $rc = $stmt->execute();
-$stmt->close();
 
 
 if ($rc) {
@@ -35,6 +34,8 @@ if ($rc) {
     die('execute() failed: ' . htmlspecialchars($stmt->error));
     cp_failure();
 }
+
+$stmt->close();
 
 ?>
 

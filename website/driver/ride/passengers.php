@@ -49,7 +49,8 @@ cp_head('Passeggeri', '../');
             }
         }
 
-        $stmt = $conn->prepare("SELECT viaggi_passeggeri.id as 'id_passeggero', viaggi_passeggeri.stato, passeggero.nome, passeggero.cognome,  AVG(feedback_passeggero.valutazione) as 'valutazione'
+        $stmt = $conn->prepare("SELECT passeggero.id as 'id_passeggero', viaggi_passeggeri.stato, passeggero.nome, passeggero.cognome,  AVG(feedback_passeggero.valutazione) as 'valutazione'
+
                     FROM viaggi_passeggeri
                     INNER JOIN passeggero ON passeggero.id = viaggi_passeggeri.passeggero_id
                     LEFT JOIN feedback_passeggero ON viaggi_passeggeri.passeggero_id = feedback_passeggero.passeggero_id
