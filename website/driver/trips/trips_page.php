@@ -113,7 +113,7 @@ include_once('../../config.php');
                         </div>
                         <div class="col-4">
                             <label for="permessi" class="form-label">Tempo stimato (minuti)</label>
-                            <input type="number" min="0" step="1" class="form-control" id="contributo_economico" name="tempo_stimato">
+                            <input type="number" min="0" step="1" class="form-control" id="contributo_economico" name="tempo_stimato" value="1">
                         </div>
                     </div>
                 </div>

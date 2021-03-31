@@ -7,16 +7,14 @@ session_start();
 include_once('../../base.php');
 include_once('../../config.php');
 
-cp_head('Lascia una review', '../');
+cp_head('Lascia una review', '../../');
 ?>
 
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container-fluid">
             <a class="navbar-brand" href="index.html">CarPooling</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-                aria-label="Toggle navigation">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -45,21 +43,23 @@ cp_head('Lascia una review', '../');
             </div>
             <div class="card-body">
                 <form action="send_review.php" method="post">
-
-                    <div class="form-group">
-                        <label for="stars">Valutazione</label>
-                        <div class="stars">
-                            1 <input class="star star-5" id="star-5" type="radio" name="star" /> <label
-                                class="star star-5" for="star-5"></label> <input class="star star-4" id="star-4"
-                                type="radio" name="star" /> <label class="star star-4" for="star-4"></label> <input
-                                class="star star-3" id="star-3" type="radio" name="star" /> <label class="star star-3"
-                                for="star-3"></label> <input class="star star-2" id="star-2" type="radio" name="star" />
-                            <label class="star star-2" for="star-2"></label> <input class="star star-1" id="star-1"
-                                type="radio" name="star" /> <label class="star star-1" for="star-1"></label>5
+                    Valutazione
+                    <div class="form-group w-25">
+                        <div class="rate p-0">
+                            <input type="radio" id="star5" name="star" value="5" />
+                            <label for="star5" title="text"></label>
+                            <input type="radio" id="star4" name="star" value="4" />
+                            <label for="star4" title="text"></label>
+                            <input type="radio" id="star3" name="star" value="3" />
+                            <label for="star3" title="text"></label>
+                            <input type="radio" id="star2" name="star" value="2" />
+                            <label for="star2" title="text"></label>
+                            <input type="radio" id="star1" name="star" value="1" />
+                            <label for="star1" title="text"></label>
                         </div>
-
                     </div>
-
+                    <br>
+                    <br>
                     <div class="form-group mt-2">
                         <label for="name">Nome</label>
                         <input type="text" class="form-control" id="name" name="name">
@@ -70,8 +70,7 @@ cp_head('Lascia una review', '../');
 
                     <div class="form-group mt-2">
                         <label for="description">Commento</label>
-                        <textarea class="form-control" cols="50" id="description" name="comment"
-                            placeholder="Lascia un commento qui..." rows="5"></textarea>
+                        <textarea class="form-control" cols="50" id="description" name="comment" placeholder="Lascia un commento qui..." rows="5"></textarea>
                     </div>
 
 
