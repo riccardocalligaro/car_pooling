@@ -47,4 +47,3 @@ if ($rc) {
 }
 
 $stmt->close();
-

@@ -191,8 +191,12 @@ include_once('config.php');
                     <li class="list-group-item">Contributo economico: ' . $row['contributo_economico'] . '€</li>
                 </ul>
                 <div class="card-body">
-                <a href="driver/ride/passengers.php?ride=' . $row['id_viaggio'] . '" class="btn btn-primary mb-1">Visualizza passeggeri</a>
-                <a href="driver/ride/end_ride.php?ride=' . $row['id_viaggio'] . '" class="btn btn-primary mb-1">Segna come concluso</a>
+                <a href="driver/ride/passengers.php?ride=' . $row['id_viaggio'] . '" class="btn btn-primary mb-1">Visualizza passeggeri</a>';
+                if ($row['stato'] != 2) {
+                    echo '<a href="driver/ride/end_ride.php?ride=' . $row['id_viaggio'] . '" class="btn btn-primary mb-1 ms-1">Segna come concluso</a>
+                    ';
+                }
+                echo '
                 <a href="driver/ride/cancel_ride.php?ride=' . $row['id_viaggio'] . '" class="btn btn-primary mb-1">Annulla</a>
                 </div>
                 </div>

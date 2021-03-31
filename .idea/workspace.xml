@@ -3,14 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="1631b25d-a390-4ffc-8895-3bf32434a493" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/client/trips/leave_review.php" beforeDir="false" afterPath="$PROJECT_DIR$/website/client/trips/leave_review.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/website/css/style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/css/style.css.map" beforeDir="false" afterPath="$PROJECT_DIR$/website/css/style.css.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/css/style.scss" beforeDir="false" afterPath="$PROJECT_DIR$/website/css/style.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/driver/login/login_driver.php" beforeDir="false" afterPath="$PROJECT_DIR$/website/driver/login/login_driver.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/driver/ride/leave_review.php" beforeDir="false" afterPath="$PROJECT_DIR$/website/driver/ride/leave_review.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/driver/trips/trips_page.php" beforeDir="false" afterPath="$PROJECT_DIR$/website/driver/trips/trips_page.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/login.php" beforeDir="false" afterPath="$PROJECT_DIR$/website/login.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/dashboard_client.php" beforeDir="false" afterPath="$PROJECT_DIR$/website/dashboard_client.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/dashboard_driver.php" beforeDir="false" afterPath="$PROJECT_DIR$/website/dashboard_driver.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -45,7 +39,7 @@
       <option name="presentableId" value="Default" />
       <updated>1617003075325</updated>
       <workItem from="1617003077513" duration="729000" />
-      <workItem from="1617184632576" duration="5550000" />
+      <workItem from="1617184632576" duration="6931000" />
     </task>
     <servers />
   </component>

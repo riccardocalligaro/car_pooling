@@ -13,9 +13,7 @@ cp_head('I miei viaggi', '../../');
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container-fluid">
             <a class="navbar-brand" href="../trips/trips_page.php">CarPooling</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-                aria-label="Toggle navigation">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -36,26 +34,26 @@ cp_head('I miei viaggi', '../../');
 
     <div class="container">
         <?php
-                    include_once('../../config.php');
+        include_once('../../config.php');
 
-                    function stateText($state)
-                    {
-                        switch ($state) {
-                            case 0:
-                                return "da confermare";
-                                break;
-                            case 1:
-                                return "confermato";
-                                break;
-                            case 2:
-                                return "recensito";
-                                break;
-                            case 3:
-                                return "rifiutato";
-                                break;
-                        }
-                    }
-                    $stmt = $conn->prepare("SELECT t1.comune as 'citta_partenza', t2.comune as 'citta_destinazione',
+        function stateText($state)
+        {
+            switch ($state) {
+                case 0:
+                    return "da confermare";
+                    break;
+                case 1:
+                    return "confermato";
+                    break;
+                case 2:
+                    return "recensito";
+                    break;
+                case 3:
+                    return "rifiutato";
+                    break;
+            }
+        }
+        $stmt = $conn->prepare("SELECT t1.comune as 'citta_partenza', t2.comune as 'citta_destinazione',
                     -- autista
                     CONCAT(autista.nome, ' ', autista.cognome) as 'autista_nominativo',
                     -- viaggio
@@ -71,42 +69,42 @@ cp_head('I miei viaggi', '../../');
                     WHERE viaggi_passeggeri.passeggero_id = ?
                     ORDER BY viaggi_passeggeri.data_creazione DESC
                     ");
-                    $stmt->bind_param("i", $_SESSION['id']);
-                    $stmt->execute();
+        $stmt->bind_param("i", $_SESSION['id']);
+        $stmt->execute();
 
-                    if ($res = $stmt->get_result()) {
-                        if ($res -> num_rows == 0) {
-                            echo '<img class="mt-5 responsive" src="../../assets/illustrations/To_do.svg" alt="" srcset="">';
-                            echo '<h2 class="text-center pt-5" style="font-size: 23px;">Non hai nessuna viaggio</h2>';
-                        }
- 
-                        while ($row = $res->fetch_assoc()) {
-                            echo ' <div class="card text-start mt-3 card-size">
+        if ($res = $stmt->get_result()) {
+            if ($res->num_rows == 0) {
+                echo '<img class="mt-5 responsive" src="../../assets/illustrations/To_do.svg" alt="" srcset="">';
+                echo '<h2 class="text-center pt-5" style="font-size: 23px;">Non hai nessuna viaggio</h2>';
+            }
+
+            while ($row = $res->fetch_assoc()) {
+                echo ' <div class="card text-start mt-3 card-size">
                 <div class="card-header">
-                '.$row['autista_nominativo'].'
+                ' . $row['autista_nominativo'] . '
       </div>
                 <div class="card-body">
-                    <h5 class="card-title">'.$row['citta_partenza'].' - '.$row['citta_destinazione'].'</h5>
-                    <p class="card-text">Ancora '.$row['posti_disponibili'].' posti disponibili</p>
+                    <h5 class="card-title">' . $row['citta_partenza'] . ' - ' . $row['citta_destinazione'] . '</h5>
+                    <p class="card-text">Ancora ' . $row['posti_disponibili'] . ' posti disponibili</p>
                 </div>
                 <ul class="list-group list-group-flush">
-                    <li class="list-group-item">Stato: '.stateText($row['stato']).'</li>
-                    <li class="list-group-item">Data partenza: '.date('d-m-Y H:i', strtotime($row['data_partenza'])).'</li>
-                    <li class="list-group-item">Data destinazione: '.date('d-m-Y H:i', strtotime($row['data_arrivo'])).'</li>
-                    <li class="list-group-item">Contributo economico: '.$row['contributo_economico'].'€</li>
+                    <li class="list-group-item">Stato: ' . stateText($row['stato']) . '</li>
+                    <li class="list-group-item">Data partenza: ' . date('d-m-Y H:i', strtotime($row['data_partenza'])) . '</li>
+                    <li class="list-group-item">Data destinazione: ' . date('d-m-Y H:i', strtotime($row['data_arrivo'])) . '</li>
+                    <li class="list-group-item">Contributo economico: ' . $row['contributo_economico'] . '€</li>
                 </ul>
                     ';
 
-                            if ($row['stato_viaggio'] === 2 && $row['stato'] === 1) {
-                                echo '  <div class="card-body">
-                                <a href="leave_review.php?ride='.$row['id_viaggio_recensione'].'&driver='.$row['id_autista'].'" class="btn btn-primary">Lascia una recensione</a>
+                if ($row['stato_viaggio'] === 2 && $row['stato'] === 1) {
+                    echo '  <div class="card-body">
+                                <a href="leave_review.php?ride=' . $row['id_viaggio_recensione'] . '&driver=' . $row['id_autista'] . '" class="btn btn-primary">Lascia una recensione</a>
                                 </div>';
-                            }
-                            echo '</div>';
-                        }
-                    }
+                }
+                echo '</div>';
+            }
+        }
 
-                    ?>
+        ?>
     </div>
 </body>
 

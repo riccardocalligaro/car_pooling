@@ -29,7 +29,7 @@ if ($rc) {
         <i class="fas fa-star fa-3x"></i>
         <h1>Successo</h1>
         </div>';
-    
+
     header("Refresh: 2; url=../../dashboard_driver.php");
 } else {
     die('execute() failed: ' . htmlspecialchars($stmt->error));

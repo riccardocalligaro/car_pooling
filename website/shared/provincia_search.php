@@ -11,6 +11,6 @@ $stmt->execute();
 
 if ($res = $stmt->get_result()) {
     while ($row = $res->fetch_assoc()) {
-        echo "<option value='{$row['istat']}'>{$row['comune']}</option>"; 
+        echo "<option value='{$row['istat']}'>{$row['comune']}</option>";
     }
 }

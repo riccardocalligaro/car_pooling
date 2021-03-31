@@ -27,25 +27,23 @@ if (isset($_POST['register'])) {
     }
 
 
-    $password=password_hash($_POST['password'], PASSWORD_DEFAULT);
+    $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
 
     $stmt = $conn->prepare("INSERT INTO autista (nome, cognome, numero_patente, scadenza_patente, telefono, email, fotografia_url, password, codice_fiscale) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
 
     $stmt->bind_param("sssssssss", $nome, $cognome, $numero_patente, $insertdate, $telefono, $email, $fotografia_url, $password, $codice_fiscale);
 
     $rc = $stmt->execute();
-    
+
     if ($rc) {
         cp_success();
         header("Refresh: 1; url=../../index.php");
-    } else {        
+    } else {
         die('execute() failed: ' . htmlspecialchars($stmt->error));
         cp_failure();
     }
 
     $stmt->close();
-
-
 }
 ?>
 
