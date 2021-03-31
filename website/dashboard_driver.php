@@ -20,9 +20,7 @@ include_once('config.php');
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container-fluid">
             <a class="navbar-brand" href="dashboard_driver.php">CarPooling</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-                aria-label="Toggle navigation">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -91,7 +89,7 @@ include_once('config.php');
 
                                     if ($res = $stmt->get_result()) {
                                         while ($row = $res->fetch_assoc()) {
-                                            echo "<option>{$row['nome']} - {$row['targa']}</option>";
+                                            echo "<option value='{$row['targa']}'>{$row['nome']} - {$row['targa']}</option>";
                                         }
                                     }
 

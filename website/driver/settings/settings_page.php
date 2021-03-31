@@ -83,7 +83,7 @@ cp_head('Impostazioni', '../../');
                     }
 
                 ?>
-                <a href="add_car.php" class="btn btn-primary">Aggiungi auto</a>
+                <a href="add_car.php" class="btn btn-primary me-1">Aggiungi auto</a>
 
                 <a href="../../logout.php" class="btn btn-primary">Logout</a>
             </div>

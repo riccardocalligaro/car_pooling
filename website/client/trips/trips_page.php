@@ -12,7 +12,7 @@ cp_head('I miei viaggi', '../../');
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container-fluid">
-            <a class="navbar-brand" href="index.html">CarPooling</a>
+            <a class="navbar-brand" href="../trips/trips_page.php">CarPooling</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
                 aria-label="Toggle navigation">

@@ -101,7 +101,10 @@ table th {
           box-shadow: 0 0 0 0.2rem rgba(108, 99, 255, 0.25);
 }
 
-.btn-primary,
+.btn-primary {
+  border-color: var(--primary);
+}
+
 .btn-primary:hover,
 .btn-primary:focus,
 .btn-primary:active,
@@ -130,31 +133,6 @@ table th {
   }
 }
 
-input[type="range"] {
-  -webkit-appearance: none;
-  /* Hides the slider so that custom slider can be made */
-  width: 100%;
-  /* Specific width is required for Firefox. */
-}
-
-input[type="range"]::-webkit-slider-thumb {
-  -webkit-appearance: none;
-}
-
-input[type="range"]:focus {
-  outline: none;
-  /* Removes the blue border. You should probably do some kind of focus styling for accessibility reasons though. */
-}
-
-input[type="range"]::-ms-track {
-  width: 100%;
-  cursor: pointer;
-  background: transparent;
-  /* Hides the slider so custom styles can be added */
-  border-color: transparent;
-  color: transparent;
-}
-
 .rate {
   float: left;
   height: 46px;
@@ -177,7 +155,7 @@ input[type="range"]::-ms-track {
 }
 
 .rate:not(:checked) > label:before {
-  content: '★ ';
+  content: "★ ";
 }
 
 .rate > input:checked ~ label {
