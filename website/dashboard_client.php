@@ -18,7 +18,7 @@ if (!(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true && $_SESSIO
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container-fluid">
-            <a class="navbar-brand" href="index.html">CarPooling</a>
+            <a class="navbar-brand" href="./dashboard_client.php">CarPooling</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -37,9 +37,8 @@ if (!(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true && $_SESSIO
             </div>
         </div>
     </nav>
-    <div class="row p-5">
+    <div class="row p-5 w-100">
         <div id="search" class="text-center">
-
             <img class="mb-5 responsive" height="250px" src="./assets/illustrations/undraw_Location_search_re_ttoj.svg" alt="" srcset="">
             <h3 class="title mx-auto">Ricerca un viaggio</h3>
             <h5>Immetti i dati di un viaggio per trovare l'orario che più ti soddisfa</h5>

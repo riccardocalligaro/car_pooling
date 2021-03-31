@@ -19,10 +19,8 @@ include_once('../../config.php');
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container-fluid">
-            <a class="navbar-brand" href="../../index.php">CarPooling</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-                aria-label="Toggle navigation">
+            <a class="navbar-brand" href="../trips/trips_page.php">CarPooling</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -115,7 +113,7 @@ include_once('../../config.php');
                         </div>
                         <div class="col-4">
                             <label for="permessi" class="form-label">Tempo stimato (minuti)</label>
-                            <input type="number" min="0" step="1" class="form-control" id="contributo_economico" name="tempo_stimato" value="0">
+                            <input type="number" min="0" step="1" class="form-control" id="contributo_economico" name="tempo_stimato" value="1">
                         </div>
                     </div>
                 </div>

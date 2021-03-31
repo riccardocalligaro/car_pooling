@@ -18,25 +18,23 @@ if (isset($_POST['register'])) {
     $documento_identita = $_POST['documento_identita'];
     $telefono = $_POST['telefono'];
     $email = $_POST['email'];
-    $password=password_hash($_POST['password'], PASSWORD_DEFAULT);
+    $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
 
     $stmt = $conn->prepare("INSERT INTO passeggero (nome, cognome, documento_identita, telefono, email, password) VALUES (?, ?, ?, ?, ?, ?)");
 
     $stmt->bind_param("ssssss", $nome, $cognome, $documento_identita, $telefono, $email, $password);
 
     $rc = $stmt->execute();
-    
+
     if ($rc) {
         cp_success();
         header("Refresh: 1; url=../../index.php");
-    } else {        
+    } else {
         die('execute() failed: ' . htmlspecialchars($stmt->error));
         cp_failure();
     }
 
     $stmt->close();
-
-
 }
 ?>
 

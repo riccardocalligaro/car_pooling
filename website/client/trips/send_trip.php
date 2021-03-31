@@ -28,14 +28,14 @@ if (isset($_POST['buy_ride'])) {
     $stmt->bind_param("iisssssi", $trip_id, $client_id, $indirizzo, $citta, $numero, $provincia, $cap, $stato);
 
     $rc = $stmt->execute();
-    
+
     if ($rc) {
         echo '<div class="text-center pt-5 pb-5">
             <i class="fas fa-car fa-3x"></i>
             <h1>Successo</h1>
             <p>Ti invieremo una conferma appena il driver accetterà la tua prenotazione</p>
             </div>';
-        
+
         header("Refresh: 3; url=../../dashboard_client.php");
     } else {
         die('execute() failed: ' . htmlspecialchars($stmt->error));

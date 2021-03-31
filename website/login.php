@@ -17,7 +17,7 @@ cp_head('Accedi', '');
     </div>
     <div class="col-sm-12 col-md-12 col-lg-6 cl1 text-center">
         <img class="d-block mx-auto responsive" height="400px" src="assets/illustrations/undraw_city_driver_jh2h.svg" alt="" srcset="">
-        <p c ass="pt-5 paragraph mx-auto">Sei un driver?</p>
+        <p class="pt-5 paragraph mx-auto">Sei un driver?</p>
         <a class="btn btn-lg btn-primary" href="driver/login/login.php">Accedi ora</a>
     </div>
 </div>

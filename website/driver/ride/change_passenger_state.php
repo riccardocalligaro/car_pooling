@@ -47,16 +47,16 @@ if ($stmt) {
     $mail->Port = 587;
     $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
     $mail->SMTPAuth = true;
-    
+
     // credenziali account google
     $mail->Username = 'carpooling.zuccante@gmail.com';
     $mail->Password = 'xz8@GncZ^HPkJoK!&';
-    
-    
+
+
     $title = '';
     $body = '';
-    
-    
+
+
     // otteniamo la prenotazione effetuata
     $stmt = $conn->prepare("SELECT t1.comune as 'citta_partenza', t2.comune as 'citta_destinazione',
     -- autista
@@ -78,45 +78,45 @@ if ($stmt) {
     ");
     $stmt->bind_param("i", $_GET['id']);
     $stmt->execute();
-    
+
     $mail->setFrom('carpooling.zuccante@gmail.com', 'Car Pooling');
-    
-    
+
+
     if ($res = $stmt->get_result()) {
         $row = $res->fetch_assoc();
-    
-    
+
+
         $mail->addAddress($row['email_passeggero'], $row['passeggero_nominativo']);
-    
-    
+
+
         if ($new_state == 1) {
             $title = 'Prenotazione confermata!';
-            $body = 'La tua prenotazione effetuata in data '.date('d-m-Y', strtotime($row['data_creazione_viaggio'])).'
+            $body = 'La tua prenotazione effetuata in data ' . date('d-m-Y', strtotime($row['data_creazione_viaggio'])) . '
             è appena stata confermata.
             <br>
             Ti ricordiamo qui i dettagli:<br>
             <ul>
-                <li>Città partenza: '.$row['citta_partenza'].'</li>
-                <li>Città destinazione: '.$row['citta_destinazione'].'</li>
-                <li>Data e ora di partenza: '.date('d-m-Y H:i', strtotime($row['data_partenza'])).'</li>
-                <li>Autista: '.$row['autista_nominativo'].'</li>
-                <li>Contributo economico: '.$row['contributo_economico'].'€</li>
-                <li>Automobile: '.$row['automobile'].'</li>
+                <li>Città partenza: ' . $row['citta_partenza'] . '</li>
+                <li>Città destinazione: ' . $row['citta_destinazione'] . '</li>
+                <li>Data e ora di partenza: ' . date('d-m-Y H:i', strtotime($row['data_partenza'])) . '</li>
+                <li>Autista: ' . $row['autista_nominativo'] . '</li>
+                <li>Contributo economico: ' . $row['contributo_economico'] . '€</li>
+                <li>Automobile: ' . $row['automobile'] . '</li>
             </ul>';
         } elseif ($new_state == 3) {
             $title = 'Prenotazione rifiutata!';
-            $body = 'La tua prenotazione effetuata in data '.date('d-m-Y', strtotime($row['data_creazione_viaggio'])).'
+            $body = 'La tua prenotazione effetuata in data ' . date('d-m-Y', strtotime($row['data_creazione_viaggio'])) . '
                 è appena stata rifiutata.
                 <br>
                 Ci dispiace molto!';
         }
     }
-    
-    
+
+
     $mail->Subject = $title;
     $mail->Body    = $body;
     $mail->IsHTML(true);
-    
+
     //send the message, check for errors
     if (!$mail->send()) {
         echo 'Mailer Error: ' . $mail->ErrorInfo;

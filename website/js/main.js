@@ -1,6 +1,5 @@
 $(document).ready(function () {
-
-  $( "#select_partenza" ).change(function() {
+  $("#select_partenza").change(function () {
     $.ajax({
       type: "POST",
       url: "../../shared/provincia_search.php",
@@ -12,7 +11,7 @@ $(document).ready(function () {
     });
   });
 
-  $( "#select_arrivo" ).change(function() {
+  $("#select_arrivo").change(function () {
     $.ajax({
       type: "POST",
       url: "../../shared/provincia_search.php",
@@ -28,7 +27,7 @@ $(document).ready(function () {
     if (!$("#search").hasClass("col-lg-6 col-md-12 col-sm-12")) {
       $("#search").addClass("col-lg-6 col-md-12 col-sm-12");
     }
-    $("#results").removeClass('d-none');
+    $("#results").removeClass("d-none");
 
     $.ajax({
       type: "POST",

@@ -20,9 +20,7 @@ include_once('config.php');
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container-fluid">
             <a class="navbar-brand" href="dashboard_driver.php">CarPooling</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-                aria-label="Toggle navigation">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -193,8 +191,12 @@ include_once('config.php');
                     <li class="list-group-item">Contributo economico: ' . $row['contributo_economico'] . '€</li>
                 </ul>
                 <div class="card-body">
-                <a href="driver/ride/passengers.php?ride=' . $row['id_viaggio'] . '" class="btn btn-primary mb-1">Visualizza passeggeri</a>
-                <a href="driver/ride/end_ride.php?ride=' . $row['id_viaggio'] . '" class="btn btn-primary mb-1">Segna come concluso</a>
+                <a href="driver/ride/passengers.php?ride=' . $row['id_viaggio'] . '" class="btn btn-primary mb-1">Visualizza passeggeri</a>';
+                if ($row['stato'] != 2) {
+                    echo '<a href="driver/ride/end_ride.php?ride=' . $row['id_viaggio'] . '" class="btn btn-primary mb-1 ms-1">Segna come concluso</a>
+                    ';
+                }
+                echo '
                 <a href="driver/ride/cancel_ride.php?ride=' . $row['id_viaggio'] . '" class="btn btn-primary mb-1">Annulla</a>
                 </div>
                 </div>

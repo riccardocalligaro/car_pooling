@@ -14,9 +14,7 @@ cp_head('Impostazioni', '../../');
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container-fluid">
             <a class="navbar-brand" href="../../index.php">CarPooling</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-                aria-label="Toggle navigation">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -37,27 +35,27 @@ cp_head('Impostazioni', '../../');
 
     <div class="container mt-3">
         <?php
-                    include_once('../../config.php');
+        include_once('../../config.php');
 
-                    # usiamo i prepared statement (sempre mysqli) per evitare injection
-                    $stmt = $conn->prepare("SELECT * FROM automobile WHERE autista_id=?");
+        # usiamo i prepared statement (sempre mysqli) per evitare injection
+        $stmt = $conn->prepare("SELECT * FROM automobile WHERE autista_id=?");
 
 
 
-                    $stmt->bind_param("i", $_SESSION["id"]);
-                    $stmt->execute();
+        $stmt->bind_param("i", $_SESSION["id"]);
+        $stmt->execute();
 
-                    if ($res = $stmt->get_result()) {
-                        while ($row = $res->fetch_assoc()) {
-                            echo '<div class="card">
+        if ($res = $stmt->get_result()) {
+            while ($row = $res->fetch_assoc()) {
+                echo '<div class="card">
                             <ul class="list-group list-group-flush">
-                              <li class="list-group-item">'.$row['targa'].' - '.$row['nome'].'</li>
+                              <li class="list-group-item">' . $row['targa'] . ' - ' . $row['nome'] . '</li>
                             </ul>
                           </div>';
-                        }
-                    }
+            }
+        }
 
-                ?>
+        ?>
 
         <form class="mt-5" method="post" action="add_car_action.php">
             <div class="form-group">
