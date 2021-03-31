@@ -69,9 +69,12 @@ cp_head('Passeggeri', '../');
                     }
 
                 
-               
+                    $non_approvati = array_filter($data_array, function ($row) {
+                        return ($row['stato'] === 3);
+                    });
+
                     $approvati = array_filter($data_array, function ($row) {
-                        return ($row['stato'] !== 0);
+                        return ($row['stato'] === 1 || $row['stato'] === 2);
                     });
 
                     $da_approvare = array_filter($data_array, function ($row) {
@@ -90,8 +93,8 @@ cp_head('Passeggeri', '../');
                         foreach ($da_approvare as $data) {
                             echo '  <li class="list-group-item">
                             '.$data['nome'].' '.$data['cognome'].'
-                            <a  href="change_passenger_state.php?state=3&ride='.$_GET['ride'].'&id='.$data['id_passeggero'].'" class="btn btn-success float-end ms-2"><i class="fas fa-check"></i></a>
-                            <a href="change_passenger_state.php?state=1&ride='.$_GET['ride'].'&id='.$data['id_passeggero'].'" class="btn btn-danger float-end"><i class="fas fa-times"></i></a>
+                            <a  href="change_passenger_state.php?state=1&ride='.$_GET['ride'].'&id='.$data['id_passeggero'].'" class="btn btn-success float-end ms-2"><i class="fas fa-check"></i></a>
+                            <a href="change_passenger_state.php?state=3&ride='.$_GET['ride'].'&id='.$data['id_passeggero'].'" class="btn btn-danger float-end"><i class="fas fa-times"></i></a>
                             </li>';
                         }
     
@@ -108,6 +111,23 @@ cp_head('Passeggeri', '../');
     
     
                         foreach ($approvati as $data) {
+                            echo '  <li class="list-group-item">'.$data['nome'].' '.$data['cognome'].'
+                            </li>';
+                        }
+    
+                        echo '</ul>
+                        </div>';
+                    }
+
+
+                    if (count($non_approvati) > 0) {
+                        echo '<div class="card w-100 mt-3" style="width: 18rem;">
+                        <div class="card-header">
+                          Non approvati
+                        </div> <ul class="list-group list-group-flush">';
+    
+    
+                        foreach ($non_approvati as $data) {
                             echo '  <li class="list-group-item">'.$data['nome'].' '.$data['cognome'].'
                             </li>';
                         }

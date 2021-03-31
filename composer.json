@@ -1,0 +1,9 @@
+{
+  "name": "CarPooling",
+  "description": "Application for the school project",
+  "homepage": "https://php-download.com/",
+  "type": "project",
+  "require": {
+    "phpmailer/phpmailer": "^6.3.0.0"
+  }
+}

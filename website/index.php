@@ -5,6 +5,7 @@
 <?php
 session_start();
 
+
 if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) {
     if ($_SESSION["type"] === 1) {
         header("location: dashboard_driver.php");

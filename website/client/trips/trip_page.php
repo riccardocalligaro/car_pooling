@@ -164,7 +164,7 @@ cp_head('Prenota un viaggio', '../../');
                     if ($res = $stmt->get_result()) {
                         while ($row = $res->fetch_assoc()) {
                             echo '
-                            <div class="card">
+                            <div class="card mb-2">
                             <div class="card-body">
                                 <div class="row">
                                     <p>
@@ -286,7 +286,7 @@ cp_head('Prenota un viaggio', '../../');
                     </div>
                 </div>
 
-                <input name="buy_ride" type="submit" class="btn btn-primary w-100" value="Continua" />
+                <input name="buy_ride" type="submit" class="btn btn-primary w-100 mb-5" value="Continua" />
 
             </form>
         </div>
