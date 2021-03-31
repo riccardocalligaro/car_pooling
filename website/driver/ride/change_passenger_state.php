@@ -17,7 +17,6 @@ include_once('../../base.php');
 cp_head('Cambia stato passeggero', '../');
 
 
-
 ?>
 
 
@@ -32,6 +31,14 @@ $new_state = $_GET['state'];
 $stmt = $conn->prepare("UPDATE viaggi_passeggeri SET stato = ? WHERE id = ?");
 $stmt->bind_param("ii", $new_state, $_GET['id']);
 $stmt->execute();
+
+$stmt->close();
+
+if ($new_state == 1) {
+    $stmt = $conn->prepare("UPDATE viaggi_autisti SET posti_disponibili = posti_disponibili - 1 WHERE id = ?");
+    $stmt->bind_param("i", $_GET['ride']);
+    $stmt->execute();
+}
 
 if ($stmt) {
     $mail = new PHPMailer();

@@ -24,6 +24,7 @@ $query = "SELECT viaggi_autisti.posti_disponibili, viaggio.contributo_economico,
     INNER JOIN autista ON viaggi_autisti.autista_id = autista.id
     INNER JOIN automobile ON viaggi_autisti.automobile_targa = automobile.targa
     WHERE viaggio.citta_partenza = partenza.id AND viaggio.citta_destinazione = destinazione.id AND viaggi_autisti.prenotazioni_aperte = true
+    ORDER BY viaggi_autisti.data_creazione DESC
     ";
 
 if ($date != '') {
@@ -52,9 +53,9 @@ if ($res = $stmt->get_result()) {
                     <p class="card-text">' . $row['posti_disponibili'] . ' posti disponibili</p>
                 </div>
                 <ul class="list-group list-group-flush">
-                    <li class="list-group-item">Data partenza: ' . $row['data_partenza'] . '</li>
-                    <li class="list-group-item">Data destinazione: ' . $row['data_arrivo'] . '</li>
-                    <li class="list-group-item">Contributo economico: ' . $row['contributo_economico'] . '€</li>
+                    <li class="list-group-item">Data partenza: '.date('d-m-Y H:i', strtotime($row['data_partenza'])).'</li>
+                    <li class="list-group-item">Data destinazione: '.date('d-m-Y H:i', strtotime($row['data_arrivo'])).'</li>
+                    <li class="list-group-item">Contributo economico: '.$row['contributo_economico'].'€</li>
                 </ul>
                 <div class="card-body">
                     ';
