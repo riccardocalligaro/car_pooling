@@ -91,7 +91,7 @@ include_once('config.php');
 
                                     if ($res = $stmt->get_result()) {
                                         while ($row = $res->fetch_assoc()) {
-                                            echo "<option>{$row['nome']} - {$row['targa']}</option>";
+                                            echo "<option value='{$row['targa']}'>{$row['nome']} - {$row['targa']}</option>";
                                         }
                                     }
 

@@ -37,7 +37,7 @@ if (isset($_POST['register'])) {
     
     if ($rc) {
         cp_success();
-        header("Refresh: 1; url=../../index.php");
+        header("Refresh: 1; url=../login/login.php");
     } else {        
         die('execute() failed: ' . htmlspecialchars($stmt->error));
         cp_failure();

@@ -39,7 +39,7 @@ function cp_failure()
 function cp_success()
 {
     echo '<div class="text-center pt-5 pb-5">
-    <i class="fas fa-ticket-alt fa-3x"></i>
+    <i class="fas fa-check fa-3x"></i>
     <h1>Successo</h1>
     </div>';
 }
